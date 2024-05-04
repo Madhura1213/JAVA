@@ -1,0 +1,264 @@
+--------------------------NestedClass-----------------
+public class TestPayment {
+
+	public static void main(String[] args) {
+		
+		Payment1 pay = new Payment1();
+		
+		//non static class
+		Payment1.CashPayment cash = pay.new CashPayment();
+		
+		//static class
+		Payment1.NetBanking bank = new Payment1.NetBanking();
+		
+		//Accessing Attributes
+		int min_amount = Payment1.Banking.min_bal;  
+		System.out.println(min_amount);
+		
+		//Accessing non static att.
+		Payment1.Banking banknew = new Payment1.Banking();
+		int withdraw = banknew.withdraw;
+		System.out.println(withdraw);
+	}
+
+}
+---------------Payment1
+
+public class Payment1 {// 
+
+ class CashPayment
+	{	CashPayment() 
+	   {	System.out.println("Cash Payment Done");     }
+	}
+	 static class NetBanking
+			{NetBanking()
+{	System.out.println("UPI Payment Done");		}
+		}
+ static class Banking
+	{
+	 int withdraw= 1000;
+	 static int min_bal =150;
+	Banking()
+     	  {System.out.println("Bank Payment Done");}
+	}		 
+}
+----------------------------------------------------------------------------------------------------------------------
+
+
+--------- addition
+
+public class AdditionOfMatrix {
+	public void AdditionOfMatx()
+	{
+		int[][] arr1= new int[3][3];
+		int sum=0,j;
+		
+		ReadArray arr = new ReadArray();
+		arr1 = arr.InputArray();
+		
+		for(int i=0;i<arr1.length;i++)
+		{
+			for( j=0;j<arr1.length;j++)
+			{
+				sum= sum +arr1[i][j];
+				
+			}
+			
+		}
+		System.out.println("Sum of Matrix is: " +sum);
+  }
+	
+}
+---------display
+public class DisplayArray {
+
+	public DisplayArray()
+	{
+		int[][] arr1= new int[3][3];
+		
+		ReadArray arr = new ReadArray();
+		arr1 = arr.InputArray();
+		
+		for(int i=0;i<arr1.length;i++)
+		{
+			for(int j=0;j<arr1.length;j++)
+			{
+				System.out.print(arr1[i][j] +"\t");
+				
+			}
+			System.out.println();
+		}
+	}
+
+
+}
+-------maxelement
+public class MaxElement {
+
+	public void MaxE()
+	{
+		int[][] arr1= new int[3][3];
+		int i,j = 0,max = 0;
+		
+		ReadArray arr = new ReadArray();
+		arr1 = arr.InputArray();
+		
+		for( i=0;i<arr1.length;i++)
+		{
+			for(j=0;j<arr1.length;j++)
+			{
+				 if (arr1[i][j] > max)
+				 {
+	                    max = arr1[i][j]; // Update max if current element is greater
+	              }
+				
+			}
+		}
+		System.out.println("Max number in matrix is "+max);
+	}
+
+}
+--------maxcolumn
+public class MaxElement {
+
+	public void MaxE()
+	{
+		int[][] arr1= new int[3][3];
+		int i,j = 0,max = 0;
+		
+		ReadArray arr = new ReadArray();
+		arr1 = arr.InputArray();
+		
+		for( i=0;i<arr1.length;i++)
+		{
+			for(j=0;j<arr1.length;j++)
+			{
+				 if (arr1[i][j] > max)
+				 {
+	                    max = arr1[i][j]; // Update max if current element is greater
+	              }
+				
+			}
+		}
+		System.out.println("Max number in matrix is "+max);
+	}
+
+}
+-----------------readarray
+import java.util.Scanner;
+
+public class ReadArray {
+
+	int[][] arr= new int[3][3];
+	Scanner sc = new Scanner(System.in);
+	
+	public int[][] InputArray() {
+		 System.out.println("Enter array Elements: ");
+		for(int i=0;i<arr.length;i++)
+		{
+			for(int j=0;j<arr.length;j++)
+			{
+				
+				arr[i][j]= sc.nextInt();
+			}
+			
+		}
+		sc.close();
+		return arr;
+		
+	}
+}
+-----------------------sumofcol
+public class SumOfCol {
+
+	public void SumOfColumns()
+	{
+		int[][] arr1= new int[3][3];
+		int sum=0,j;
+		
+		ReadArray arr = new ReadArray();
+		arr1 = arr.InputArray();
+		
+		for(int i=0;i<arr1.length;i++)
+		{ 
+			for( j=0;j<arr1.length;j++)
+			{
+				
+				sum= sum +arr1[j][i];
+				
+			}
+			System.out.println("Sum of" +j+"Columns is: " +sum);
+			sum=0;
+		}
+	
+  }
+	
+}	
+-------------sumofrow
+public class SumOfRows {
+
+	public void SumOfRow()
+	{
+		int[][] arr1= new int[3][3];
+		int sum=0,j;
+		
+		ReadArray arr = new ReadArray();
+		arr1 = arr.InputArray();
+		
+		for(int i=0;i<arr1.length;i++)
+		{
+			for( j=0;j<arr1.length;j++)
+			{	sum= sum +arr1[i][j]; }
+		System.out.println("Sum of" +i+"Rows is: " +sum);
+		sum=0;     }
+	
+  }	
+}
+---------------testarray
+import java.util.Scanner;
+
+public class TestArray {
+
+	public static void main(String[] args) {
+	
+		System.out.println("MAIN \n 1.Display Array \n 2.Read Array \n
+                                                             3.Sum Of Columns \n 4.Sum Of Rows \n 5.Addition Matrix");
+		System.out.println("Enter a choice ");
+		
+		Scanner sc = new Scanner(System.in);
+		int choice = sc.nextInt();  
+		
+		switch(choice)
+		{
+		case 1:
+			DisplayArray display = new DisplayArray();
+			break;
+		case 2:
+			ReadArray arr = new ReadArray();
+			break;
+		case 3:
+			SumOfCol colsum = new SumOfCol();
+			colsum.SumOfColumns();
+			break;
+		case 4:
+			SumOfRows rowsum = new SumOfRows();
+			rowsum.SumOfRow();
+			break;
+		case 5:
+			AdditionOfMatrix addmatx = new AdditionOfMatrix();
+			addmatx.AdditionOfMatx();
+			break;
+			
+		case 6:
+			MaxElement max = new MaxElement();
+			max.MaxE();
+			break;
+			
+		case 7:
+			MaxElementColumns maxc = new MaxElementColumns();
+			maxc.MaxE();
+			break;    }	
+	}
+}
+-----------------------------------------------------------------------------------------------------------
+
